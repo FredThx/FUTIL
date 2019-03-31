@@ -27,6 +27,6 @@ class gmail:
 			server.sendmail(self.gmail_account, to_email, message.as_string())
 			server.close()
 			return True
-		except Exception , e:
+		except Exception as e:
 			logging.error('Erreur sending email :' + str(e))
 			return False
