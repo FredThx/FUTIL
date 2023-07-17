@@ -118,14 +118,17 @@ class my_logging():
 			- name_logfile		:	name of the file to log
 			- logfile_level		:	DEBUG, INFO, WARNING, ERROR, CRITICAL	
 		'''
-		if self.details:
-			formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s at %(pathname)s ,line n°:%(lineno)s')
-		else:
-			formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-		self.file_handler = RotatingFileHandler(name_logfile, 'a', self.max_file_size, self.max_file_nb)
-		self.file_handler.setLevel(logfile_level)
-		self.file_handler.setFormatter(formatter)
-		self.logger.addHandler(self.file_handler)
+		try:
+			if self.details:
+				formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s at %(pathname)s ,line n°:%(lineno)s')
+			else:
+				formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+			self.file_handler = RotatingFileHandler(name_logfile, 'a', self.max_file_size, self.max_file_nb)
+			self.file_handler.setLevel(logfile_level)
+			self.file_handler.setFormatter(formatter)
+			self.logger.addHandler(self.file_handler)
+		except PermissionError as e:
+			print(e)
 	
 	def add_console_handler(self, console_level):
 		'''Add a console handler to logger
