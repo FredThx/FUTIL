@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*
 
 from ma_classe import *
-from my_logging import *
+from FUTIL.my_logging import *
 
 log = my_logging(console_level = DEBUG, logfile_level = INFO)
 #log = my_logging()

@@ -99,7 +99,7 @@ class my_logging():
 				self.add_file_handler(name_logfile, logfile_level)
 		if email_level:
 			self.add_email_handler(email_level)
-		#Pour loggin des execptions
+		#Pour loggin des exceptions
 		sys.excepthook = self.log_exception_hook
 		logging.info("my_logging logger is started. Console : %s. File (%s) : %s" % (str_levels[console_level], name_logfile, str_levels[logfile_level]))
 		
@@ -129,6 +129,7 @@ class my_logging():
 			self.logger.addHandler(self.file_handler)
 		except PermissionError as e:
 			print(e)
+
 	
 	def add_console_handler(self, console_level):
 		'''Add a console handler to logger

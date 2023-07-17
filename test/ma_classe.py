@@ -20,5 +20,5 @@ class ma_classe():
 	def plante_pas(self):
 		try:
 			0/0
-		except Exception, e:
+		except Exception as e:
 			logging.error("une '%s' a été évité" % e)
